@@ -246,10 +246,10 @@ ol{margin:8px 0;padding-left:0;list-style:none}ol li{padding:3px 0}
 </head>
 <body>
 <div id="app"></div>
-<input type="file" id="impfile" accept=".json,application/json" hidden>
-<input type="file" id="resfile" accept=".json,application/json" hidden>
+<input type="file" id="impfile" hidden>
+<input type="file" id="resfile" hidden>
 <script>
-let DATA=[];const SITE=true;const VERSION="v0.1.0";
+let DATA=[];const SITE=true;const VERSION="v0.1.1";
 const star=(x,y,r)=>`<path d="M${x} ${y-r}Q${x} ${y} ${x+r} ${y}Q${x} ${y} ${x} ${y+r}Q${x} ${y} ${x-r} ${y}Q${x} ${y} ${x} ${y-r}Z" fill="currentColor" stroke="none"/>`;
 const leaves=[[92,86,-40],[108,78,40],[93,68,-40],[107,60,40],[94,50,-40],[106,43,40]].map(([x,y,a])=>`<ellipse cx="${x}" cy="${y}" rx="8" ry="3.4" transform="rotate(${a} ${x} ${y})"/>`).join("");
 const LB=`<svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M100 104V30"/>${leaves}<circle cx="100" cy="24" r="1.8" fill="currentColor"/><circle cx="92" cy="32" r="1.2" fill="currentColor"/><circle cx="108" cy="28" r="1.2" fill="currentColor"/><path d="M100 132C84 118 56 114 22 124L34 96C60 86 84 92 100 112C116 92 140 86 166 96L178 124C144 114 116 118 100 132Z"/><path d="M100 112C86 100 64 92 42 96M100 106C88 90 70 82 54 84M100 100C92 84 80 76 68 76M100 112C114 100 136 92 158 96M100 106C112 90 130 82 146 84M100 100C108 84 120 76 132 76"/><path d="M22 124L20 132C56 124 84 128 100 140C116 128 144 124 180 132L178 124"/>${star(36,34,6)}${star(164,48,5)}${star(150,22,3.5)}<circle cx="52" cy="54" r="1.5" fill="currentColor"/><circle cx="170" cy="72" r="1.5" fill="currentColor"/></svg>`;
@@ -319,7 +319,7 @@ async function boot(){try{db=await openDb()}catch(e){storageBad=true;app.innerHT
 function toast(m,stay){let t=document.querySelector(".toast");if(!t){t=document.createElement("div");t.className="toast";document.body.appendChild(t)}t.textContent=m;t.classList.add("on");clearTimeout(t._h);if(!stay)t._h=setTimeout(()=>t.classList.remove("on"),3000)}
 function twice(b,fn){if(b.dataset.armed){delete b.dataset.armed;b.textContent=b.dataset.txt;fn();return}b.dataset.armed="1";b.dataset.txt=b.textContent;b.textContent="再点一次确认";setTimeout(()=>{if(b.dataset.armed){delete b.dataset.armed;b.textContent=b.dataset.txt}},3000)}
 function readFile(f){return new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(String(r.result));r.onerror=()=>no(r.error);r.readAsText(f)})}
-function importText(text){impNote="";let a=null;try{a=JSON.parse(text)}catch(e){}
+function importText(text){impNote="";let a=null;try{a=JSON.parse(text.replace(/^﻿/,""))}catch(e){}
  if(!valid(a)||a.format!=1){impNote=`<p class="sub" style="margin-top:14px;color:var(--wine)">这个文件读不懂，书架没有变化。</p>`;S.v="shelf";draw();return false}
  pending=a;S.v="import";draw();return true}
 function importPage(){const a=pending;if(!a){S.v="shelf";return shelf()}const old=DATA.find(x=>x.id==a.id);const r=a.reader||{};const parts=(a.sections||[]).length;
