@@ -1,5 +1,9 @@
 [
  {
+  "version": "v0.7.1",
+  "notes": "设置里“连不上时”的说明改成只看有没有网。"
+ },
+ {
   "version": "v0.7.0",
   "notes": "网上同步：App 搬到 https://luxinyi034-dotcom.github.io/shuowenjiezi/，文章加密放在 GitHub 上，iPad 有网就能取，电脑不用开、也不用 Tailscale。第一次打开输入一次同步密码。旧地址的书架上会提示怎么搬。"
  },
