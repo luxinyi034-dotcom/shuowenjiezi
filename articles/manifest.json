@@ -1,7 +1,7 @@
 {
  "format": 1,
- "version": "v0.7.1",
- "built": "2026-11-07T09:14:15",
+ "version": "v0.8.0",
+ "built": "2026-11-07T10:23:56",
  "enc": {
   "alg": "AES-GCM",
   "kdf": "PBKDF2-SHA256",
@@ -12,18 +12,18 @@
  "articles": [
   {
    "id": "martin",
-   "file": "ffa6420dab07f00b.bin",
-   "hash": "ffa6420dab07f00b"
+   "file": "eb3ed832ee4ca68d.bin",
+   "hash": "eb3ed832ee4ca68d"
   },
   {
    "id": "plastic",
-   "file": "bf535aae1c8ad5f2.bin",
-   "hash": "bf535aae1c8ad5f2"
+   "file": "b9fb1b14eb0771a6.bin",
+   "hash": "b9fb1b14eb0771a6"
   },
   {
    "id": "bush",
-   "file": "2e25cdb3139ad172.bin",
-   "hash": "2e25cdb3139ad172"
+   "file": "8ff174bb4567b217.bin",
+   "hash": "8ff174bb4567b217"
   }
  ]
 }
