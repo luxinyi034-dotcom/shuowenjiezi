@@ -1,1 +1,4 @@
-# shuowenjiezi
+# 拆文解字
+
+个人学习用的 iPad 离线 App。由电脑上的 `app/publish.py` 自动生成，别在这里手改。
+文章是加密存放的。
